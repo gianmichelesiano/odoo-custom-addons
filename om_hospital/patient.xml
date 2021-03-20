@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="patient_tree" model="ir.ui.view">
+        <field name="name">hospital.patiens.tree</field>
+        <field name="model">hospital.patiens</field>
+        <field name="arch" type="xml">
+            <tree string="Patients">
+                <field name="name_seq"/>
+                <field name="patient_name"/>
+
+                <field name="patient_age"/>
+                <field name="notes"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="patient_form" model="ir.ui.view">
+        <field name="name">hospital.patiens.form</field>
+        <field name="model">hospital.patiens</field>
+        <field name="arch" type="xml">
+            <form string="Patients">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name_seq" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="patient_name"/>
+                        <field name="patient_age"/>
+                        <field name="notes"/>
+                        <field name="image"/>
+                    </group>
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="action_patient">
+      <field name="name">Patients</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital.patiens</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Create a first Patient?
+          </p>
+      </field>
+    </record>
+
+    <menuitem id="hospital_root" name="Hospital" sequence="0"/>
+    <menuitem id="hospital_patient" name="Patients" parent="hospital_root" action="action_patient"/>
+</odoo>
+
+<!--
+
+
+    <record id="action_patient" model="ir.actions.act_window">
+      <field name="name">Patient</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hospital.patiens</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Create a first Patient
+          </p>
+      </field>
+    </record>
+    -->
